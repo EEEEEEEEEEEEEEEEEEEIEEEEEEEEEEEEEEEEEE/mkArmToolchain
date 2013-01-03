@@ -1,0 +1,39 @@
+
+
+
+			swd working example
+
+
+
+noel@acer-laptop /local/src/codelite/Versaloon_test2
+$ openocd -f program_vsllink_swd.cfg 
+Open On-Chip Debugger 0.5.0-dev-00719-ga727418-dirty (2011-01-31-09:27)
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.berlios.de/doc/doxygen/bugs.html
+Warn : must select a transport.
+Info : OpenOCD runs in SWD mode
+1000 kHz
+adapter_nsrst_delay: 100
+jtag_ntrst_delay: 100
+cortex_m3 reset_config sysresetreq
+Info : Versaloon(0x15)by Simon(compiled on Jan 29 2011)
+Info : USB_TO_XXX abilities: 0x0000024F:0x010001EF:0xC0000007
+Info : clock speed 1000 kHz
+Info : stm32.cpu: hardware has 6 breakpoints, 4 watchpoints
+1125 kHz
+target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000408 msp: 0x20005000
+verify Capture-IR is disabled
+background polling: on
+TAP: stm32.cpu (enabled)
+target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000408 msp: 0x20005000
+Info : device id = 0x20036410
+Info : flash size = 128kbytes
+stm32x mass erase complete
+wrote 2568 bytes from file Application.elf in 0.421875s (5.944 KiB/s)
+shutdown command invoked
+

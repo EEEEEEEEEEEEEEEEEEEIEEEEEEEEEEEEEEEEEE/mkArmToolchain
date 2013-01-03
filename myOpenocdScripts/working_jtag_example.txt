@@ -1,0 +1,44 @@
+
+
+
+
+			jtag working example
+
+
+noel@acer-laptop /local/src/codelite/Versaloon_test2
+$ openocd -f program_vsllink_jtag.cfg 
+Open On-Chip Debugger 0.5.0-dev-00719-ga727418-dirty (2011-01-31-09:27)
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.berlios.de/doc/doxygen/bugs.html
+Warn : must select a transport.
+1000 kHz
+adapter_nsrst_delay: 100
+jtag_ntrst_delay: 100
+Info : Versaloon(0x15)by Simon(compiled on Jan 29 2011)
+Info : USB_TO_XXX abilities: 0x0000024F:0x010001EF:0xC0000007
+Info : clock speed 1000 kHz
+Info : JTAG tap: stm32.cpu tap/device found: 0x3ba00477 (mfg: 0x23b, part: 0xba00, ver: 0x3)
+Info : JTAG tap: stm32.bs tap/device found: 0x16410041 (mfg: 0x020, part: 0x6410, ver: 0x1)
+Info : stm32.cpu: hardware has 6 breakpoints, 4 watchpoints
+1125 kHz
+Info : JTAG tap: stm32.cpu tap/device found: 0x3ba00477 (mfg: 0x23b, part: 0xba00, ver: 0x3)
+Info : JTAG tap: stm32.bs tap/device found: 0x16410041 (mfg: 0x020, part: 0x6410, ver: 0x1)
+Warn : Only resetting the Cortex-M3 core, use a reset-init event handler to reset any peripherals
+target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000408 msp: 0x20005000
+verify Capture-IR is disabled
+background polling: on
+TAP: stm32.cpu (enabled)
+target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000408 msp: 0x20005000
+Info : device id = 0x20036410
+Info : flash size = 128kbytes
+stm32x mass erase complete
+wrote 2568 bytes from file Application.elf in 0.265625s (9.441 KiB/s)
+Info : JTAG tap: stm32.cpu tap/device found: 0x3ba00477 (mfg: 0x23b, part: 0xba00, ver: 0x3)
+Info : JTAG tap: stm32.bs tap/device found: 0x16410041 (mfg: 0x020, part: 0x6410, ver: 0x1)
+Warn : Only resetting the Cortex-M3 core, use a reset-init event handler to reset any peripherals
+shutdown command invoked
