@@ -1,1 +1,0 @@
-./configure --enable-ft2232_libftdi --enable-vsllink --enable-jlink --enable-usbprog --enable-stlink --enable-ftdi --libdir=/usr/lib64/ --prefix=/usr

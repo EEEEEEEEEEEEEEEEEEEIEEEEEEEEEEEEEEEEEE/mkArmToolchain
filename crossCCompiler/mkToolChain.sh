@@ -101,7 +101,7 @@ done
 
 TARGET='arm-none-eabi'
 PKG_PREFIX='arm_none_eabi'
-PKG_SUFFIX='1'
+PKG_SUFFIX='1dk'
 MAKE_PREFIX=' -j 5'
 PREFIX=/usr/
 LIBDIR=/usr/lib64/
