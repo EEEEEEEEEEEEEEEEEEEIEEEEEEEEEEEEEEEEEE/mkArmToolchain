@@ -373,8 +373,8 @@ run_log()
     make_$1 2>&1 >> $1.log || exit 1
     kill $TMP_PID
 }
-run_log binutils || exit 1
-run_log gcc || exit 1
-run_log newlib || exit 1
+#run_log binutils || exit 1
+#run_log gcc || exit 1
+#run_log newlib || exit 1
 run_log gcc2 || exit 1
 run_log gdb || exit 1

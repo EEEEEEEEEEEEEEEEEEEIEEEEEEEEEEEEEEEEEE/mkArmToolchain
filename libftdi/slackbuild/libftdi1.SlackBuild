@@ -25,8 +25,8 @@ set -e
 
 
 # Basic information
-PRGNAM=libftdi
-VERSION=${VERSION:-0.20}
+PRGNAM=libftdi1
+VERSION=${VERSION:-1.0}
 ARCH=${ARCH:-i486}
 BUILD=${BUILD:-1}
 TAG=${TAG:-mp}
@@ -63,7 +63,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xzvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xf $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 
 
@@ -83,15 +83,9 @@ echo "+-------------+"
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
-./configure \
-  --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --with-boost-libdir=/usr/lib${LIBDIRSUFFIX} \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --mandir=/usr/man \
-  --enable-libftdipp \
-  --build=$ARCH-slackware-linux
-
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX="/usr" ../
 
 # Compile the application and install it into the $PKG directory
 echo -e "\e[0;31m+---------------+"
@@ -104,28 +98,31 @@ echo -e "\e[0;31m+-----------------------+"
 echo "| Starting Make Install |"
 echo -e "+-----------------------+\E[0;0m"
 
-make install-strip DESTDIR=$PKG
+make install DESTDIR=$PKG
 
 
 # Copy program documentation into the package
 # Also, include the SlackBuild script in the documentation directory
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a \
-  AUTHORS ChangeLog COPYING* LICENSE README* \
-  $PKG/usr/doc/$PRGNAM-$VERSION
+#cp -a \
+#  AUTHORS ChangeLog COPYING* LICENSE README* \
+#  $PKG/usr/doc/$PRGNAM-$VERSION
 
-cp -a $TMP/$PRGNAM-$VERSION/doc/html $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a $TMP/$PRGNAM-$VERSION/examples $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a $TMP/$PRGNAM-$VERSION/doc/man $PKG/usr/man
+#cp -a $TMP/$PRGNAM-$VERSION/doc/html $PKG/usr/doc/$PRGNAM-$VERSION
+#cp -a $TMP/$PRGNAM-$VERSION/examples $PKG/usr/doc/$PRGNAM-$VERSION
+#cp -a $TMP/$PRGNAM-$VERSION/doc/man $PKG/usr/man
 
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 
 # Compress man pages
+if [ -x $PKG/usr/man
+then
 ( cd $PKG/usr/man
   find . -type f -exec gzip -9 {} \;
   for i in $( find . -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 )
+fi
 
 
 # Copy the slack-desc (and a custom doinst.sh if necessary) into ./install
