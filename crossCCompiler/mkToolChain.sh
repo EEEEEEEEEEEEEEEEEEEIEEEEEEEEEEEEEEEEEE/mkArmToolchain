@@ -213,7 +213,7 @@ make_newlib()
 	echo "package newlib_$PKG_PREFIX-$NEWLIB_VER-x86_64-$PKG_SUFFIX installed!"
       else
 	cd $SRCDIR
-	tar -xf newlib*.tar.*z
+	#tar -xf newlib*.tar.*z
         cd $SRCDIR/newlib-$NEWLIB_VER
 	if [ -d build ] 
 	  then rm -rf build
@@ -377,4 +377,4 @@ run_log()
 #run_log gcc || exit 1
 #run_log newlib || exit 1
 run_log gcc2 || exit 1
-run_log gdb || exit 1
+#run_log gdb || exit 1
